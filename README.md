@@ -1,15 +1,17 @@
-   # 🪙 SmartSpend
-  
-  **Intelligent Personal Finance Tracker & AI Wealth Coach**
-  
-  *An enterprise-grade, full-stack MVC application featuring OCR receipt scanning, voice command natural language transaction processing, and automated financial coaching powered by Gemini 3.5 Flash.*
-  
-  [Key Features](#-key-features) 
-  • [Tech Stack](#-technology-stack) 
-  • [Installation](#%EF%B8%8F-installation--run-guide) 
-  • [Environment Setup](#-configuration--environment-variables) 
-  • [API Documentation](#-api-endpoints) 
-  • [Postman Collection](#-postman-testing)
+# 🪙 SmartSpend
+
+**Intelligent Personal Finance Tracker & AI Wealth Coach**
+
+*An enterprise-grade, full-stack application featuring OCR receipt scanning, voice command natural language transaction processing, and automated financial coaching powered by Gemini 3.5 Flash.*
+
+🚀 **Live Demo**: [smart-expense-nine-chi.vercel.app](https://smart-expense-nine-chi.vercel.app/)
+
+[Key Features](#-key-features) 
+• [Tech Stack](#-technology-stack) 
+• [Installation](#%EF%B8%8F-installation--run-guide) 
+• [Environment Setup](#-configuration--environment-variables) 
+• [API Documentation](#-api-endpoints) 
+• [Postman Collection](#-postman-testing)
 
 
 ---
