@@ -1,0 +1,128 @@
+{
+  "users": [
+    {
+      "name": "akash",
+      "email": "a@gmail.com",
+      "password": "$2b$10$Ske1zJsmURYdRtAtIVzsxeDoTBx6/IjKpeP50vKlRDeTPnIG.mbZ2",
+      "otp": "931674",
+      "otpExpires": "2026-06-29T20:44:55.758Z",
+      "isVerified": true,
+      "role": "admin",
+      "_id": "6q1y5kq7uruql863rep1ic",
+      "id": "6q1y5kq7uruql863rep1ic",
+      "createdAt": "2026-06-29T20:29:55.758Z",
+      "updatedAt": "2026-06-29T20:29:55.758Z"
+    },
+    {
+      "name": "vinod",
+      "email": "b@gmail.com",
+      "password": "$2b$10$3QNqxTu3JrRF.1AtyPNHGeSozBWMh78fEgmZp9QoGQwKmGBkp/KXW",
+      "otp": "775310",
+      "otpExpires": "2026-06-29T21:04:50.413Z",
+      "isVerified": true,
+      "role": "admin",
+      "_id": "8xu0hs7c0iags4p6jf9u8w",
+      "id": "8xu0hs7c0iags4p6jf9u8w",
+      "createdAt": "2026-06-29T20:49:50.413Z",
+      "updatedAt": "2026-06-29T20:49:50.413Z"
+    },
+    {
+      "name": "Akash Gautam",
+      "email": "gautamakash626333@gmail.com",
+      "password": "$2a$10$C0XlYf7WnIpxUoU88/3b6O6jYtC09HlP31oOnBIsF29C.9Fk/YQ8a",
+      "otp": null,
+      "otpExpires": null,
+      "isVerified": true,
+      "role": "admin",
+      "_id": "admin_gautam_akash_profile_id",
+      "id": "admin_gautam_akash_profile_id",
+      "createdAt": "2026-06-29T13:46:00.000Z",
+      "updatedAt": "2026-06-29T13:46:00.000Z"
+    }
+  ],
+  "transactions": [
+    {
+      "userId": "6q1y5kq7uruql863rep1ic",
+      "description": "coffee",
+      "amount": 20,
+      "type": "expense",
+      "category": "Food",
+      "date": "2026-06-29",
+      "paymentMethod": "UPI",
+      "_id": "3ix5fl9eagy7tszu6j2l4r",
+      "id": "3ix5fl9eagy7tszu6j2l4r",
+      "createdAt": "2026-06-29T20:31:19.828Z",
+      "updatedAt": "2026-06-29T20:31:19.828Z"
+    },
+    {
+      "userId": "6q1y5kq7uruql863rep1ic",
+      "description": "Rapido",
+      "amount": 120,
+      "type": "income",
+      "category": "Salary/Freelance",
+      "date": "2026-06-29",
+      "paymentMethod": "UPI",
+      "_id": "trr6t9dadrxwis35k0wcd",
+      "id": "trr6t9dadrxwis35k0wcd",
+      "createdAt": "2026-06-29T20:32:12.735Z",
+      "updatedAt": "2026-06-29T20:32:12.735Z"
+    }
+  ],
+  "budgets": [
+    {
+      "userId": "6q1y5kq7uruql863rep1ic",
+      "category": "Food",
+      "limit": 200,
+      "_id": "eqlr22deqspgq95iomylbr",
+      "id": "eqlr22deqspgq95iomylbr",
+      "createdAt": "2026-06-29T20:33:24.687Z",
+      "updatedAt": "2026-06-29T20:33:24.687Z"
+    },
+    {
+      "userId": "6q1y5kq7uruql863rep1ic",
+      "category": "Housing",
+      "limit": 0,
+      "_id": "6c1ekk5oa75cbw79gltx6",
+      "id": "6c1ekk5oa75cbw79gltx6",
+      "createdAt": "2026-06-29T20:33:24.943Z",
+      "updatedAt": "2026-06-29T20:33:24.943Z"
+    },
+    {
+      "userId": "6q1y5kq7uruql863rep1ic",
+      "category": "Entertainment",
+      "limit": 0,
+      "_id": "whs6fehuvzmtw07pfx8lta",
+      "id": "whs6fehuvzmtw07pfx8lta",
+      "createdAt": "2026-06-29T20:33:25.134Z",
+      "updatedAt": "2026-06-29T20:33:25.134Z"
+    },
+    {
+      "userId": "6q1y5kq7uruql863rep1ic",
+      "category": "Utilities",
+      "limit": 0,
+      "_id": "cowh5dr851isqbs5o5g6d",
+      "id": "cowh5dr851isqbs5o5g6d",
+      "createdAt": "2026-06-29T20:33:25.261Z",
+      "updatedAt": "2026-06-29T20:33:25.261Z"
+    },
+    {
+      "userId": "6q1y5kq7uruql863rep1ic",
+      "category": "Transportation",
+      "limit": 0,
+      "_id": "tieklpyemtaotb6428aiq9",
+      "id": "tieklpyemtaotb6428aiq9",
+      "createdAt": "2026-06-29T20:33:25.396Z",
+      "updatedAt": "2026-06-29T20:33:25.396Z"
+    },
+    {
+      "userId": "6q1y5kq7uruql863rep1ic",
+      "category": "Shopping",
+      "limit": 0,
+      "_id": "3v2zspxz52o0sbcbpna3eph",
+      "id": "3v2zspxz52o0sbcbpna3eph",
+      "createdAt": "2026-06-29T20:33:25.543Z",
+      "updatedAt": "2026-06-29T20:33:25.543Z"
+    }
+  ],
+  "categories": []
+}

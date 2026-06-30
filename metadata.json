@@ -1,0 +1,6 @@
+{
+  "name": "SmartSpend",
+  "description": "A modern AI-powered Expense Tracker to analyze your daily finances with dynamic metrics, interactive charts, customizable budgeting, and OCR receipt scanning.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
