@@ -2,12 +2,27 @@ import nodemailer from 'nodemailer';
 
 // Lazy load or construct transporter
 function getTransporter() {
+  const host = process.env.SMTP_HOST;
+  const port = Number(process.env.SMTP_PORT || '587');
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+
+  // Prioritize standard SMTP if credentials are provided
+  if (host && user && pass) {
+    return nodemailer.createTransport({
+      host,
+      port,
+      secure: port === 465,
+      auth: { user, pass }
+    });
+  }
+
   const googleUser = process.env.GOOGLE_USER;
   const clientId = process.env.GOOGLE_CLIENT_ID;
   const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
   const refreshToken = process.env.REFRESH_TOKEN;
 
-  // Use Gmail OAuth2 if Google credentials are fully configured
+  // Fallback to Gmail OAuth2 if Google credentials are fully configured
   if (googleUser && clientId && clientSecret && refreshToken) {
     return nodemailer.createTransport({
       service: 'gmail',
@@ -18,21 +33,6 @@ function getTransporter() {
         clientSecret: clientSecret,
         refreshToken: refreshToken
       }
-    });
-  }
-
-  const host = process.env.SMTP_HOST;
-  const port = Number(process.env.SMTP_PORT || '587');
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
-
-  // Fallback to standard SMTP if credentials are provided
-  if (host && user && pass) {
-    return nodemailer.createTransport({
-      host,
-      port,
-      secure: port === 465,
-      auth: { user, pass }
     });
   }
 
