@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useAuth, authFetch } from '../context/AuthContext';
 import { Wallet, LogOut, ArrowRight, ShieldCheck } from 'lucide-react';
 
 export default function OTPVerification() {
@@ -14,6 +14,7 @@ export default function OTPVerification() {
 
   // Resend cooldown timer state
   const [cooldown, setCooldown] = useState(0);
+  const [simulatedEmails, setSimulatedEmails] = useState<any[]>([]);
 
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
@@ -24,6 +25,24 @@ export default function OTPVerification() {
       return () => clearTimeout(timer);
     }
   }, [cooldown]);
+
+  useEffect(() => {
+    const fetchSimulated = async () => {
+      try {
+        const response = await authFetch('/api/auth/simulated-emails');
+        if (response.ok) {
+          const data = await response.json();
+          setSimulatedEmails(data);
+        }
+      } catch (err) {
+        console.error('Error fetching simulated emails:', err);
+      }
+    };
+
+    fetchSimulated();
+    const interval = setInterval(fetchSimulated, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
 
 
@@ -215,6 +234,41 @@ export default function OTPVerification() {
             </div>
           </div>
         </form>
+
+        {/* Simulated Sandbox Mailbox Panel */}
+        {simulatedEmails.length > 0 && (
+          <div className="mt-8 pt-6 border-t border-slate-200/60 dark:border-neutral-800/80 space-y-4">
+            <h2 className="text-xs font-bold text-slate-400 dark:text-neutral-400 uppercase tracking-wider flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              Development Sandbox Mailbox
+            </h2>
+            <div className="space-y-3 max-h-60 overflow-y-auto">
+              {simulatedEmails.map((email, index) => {
+                // Extract OTP from the simulated email text/html using a regex
+                const otpMatch = email.text.match(/\b\d{6}\b/);
+                const otp = otpMatch ? otpMatch[0] : null;
+
+                return (
+                  <div key={index} className="p-3 bg-slate-50 dark:bg-neutral-950/50 border border-slate-200/50 dark:border-neutral-800/50 rounded-2xl text-xs space-y-1.5 relative overflow-hidden">
+                    <div className="flex justify-between items-center text-[10px] text-slate-400 dark:text-neutral-500">
+                      <span>To: {email.to}</span>
+                      <span>{new Date(email.timestamp).toLocaleTimeString()}</span>
+                    </div>
+                    <div className="font-bold text-slate-800 dark:text-neutral-200">
+                      {email.subject}
+                    </div>
+                    {otp && (
+                      <div className="flex items-center justify-between bg-indigo-500/5 dark:bg-indigo-500/10 border border-indigo-500/15 p-2 rounded-xl mt-1">
+                        <span className="text-[11px] font-medium text-slate-500 dark:text-neutral-400">Extracted OTP Code:</span>
+                        <span className="text-sm font-black text-indigo-600 dark:text-indigo-400 tracking-wider">{otp}</span>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
