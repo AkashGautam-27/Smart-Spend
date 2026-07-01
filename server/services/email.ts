@@ -1,28 +1,12 @@
 import nodemailer from 'nodemailer';
 
-// Lazy load or construct transporter
 function getTransporter() {
-  const host = process.env.SMTP_HOST;
-  const port = Number(process.env.SMTP_PORT || '587');
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
-
-  // Prioritize standard SMTP if credentials are provided
-  if (host && user && pass) {
-    return nodemailer.createTransport({
-      host,
-      port,
-      secure: port === 465,
-      auth: { user, pass }
-    });
-  }
-
   const googleUser = process.env.GOOGLE_USER;
   const clientId = process.env.GOOGLE_CLIENT_ID;
   const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
   const refreshToken = process.env.REFRESH_TOKEN;
 
-  // Fallback to Gmail OAuth2 if Google credentials are fully configured
+  // Gmail OAuth2 transporter if Google credentials are fully configured
   if (googleUser && clientId && clientSecret && refreshToken) {
     return nodemailer.createTransport({
       service: 'gmail',
@@ -64,7 +48,7 @@ export async function sendEmail({
   if (transporter) {
     try {
       await transporter.sendMail({
-        from: process.env.SMTP_FROM || '"SmartSpend Support" <support@smartspend.io>',
+        from: process.env.EMAIL_FROM || process.env.GOOGLE_USER || '"SmartSpend Support" <support@smartspend.io>',
         to,
         subject,
         text,

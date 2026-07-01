@@ -40,7 +40,7 @@ server/
 │   └── aiRoutes.ts             # routes map for Gemini AI OCR scanner receipt analysis
 │
 ├── services/
-│   └── email.ts                # SMTP transport service with beautiful fallback HTML generator
+│   └── email.ts                # Gmail OAuth2 email service with beautiful fallback HTML generator
 │
 ├── utils/
 │   └── jwt.ts                  # Access and Refresh tokens signing and verification wrappers
