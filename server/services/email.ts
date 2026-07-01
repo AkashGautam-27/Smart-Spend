@@ -55,25 +55,26 @@ export async function sendEmail({
         html
       });
       console.log(`[Email] Real email sent successfully to ${to}. Subject: "${subject}"`);
+      return;
     } catch (error) {
       console.error(`[Email] Failed to send real email to ${to}:`, error);
-      throw error;
+      console.log(`[Email] Falling back to development simulated sandbox mailbox.`);
     }
-  } else {
-    // Log to simulated emails memory store
-    simulatedEmails.push({ to, subject, text, html, timestamp: new Date() });
-    if (simulatedEmails.length > 50) {
-      simulatedEmails.shift();
-    }
-
-    // Elegant fallback logging for immediate out-of-the-box feedback
-    console.log('\n' + '='.repeat(60));
-    console.log(`[EMAIL SIMULATOR] Outbound email to: ${to}`);
-    console.log(`[EMAIL SIMULATOR] Subject: ${subject}`);
-    console.log('-'.repeat(60));
-    console.log(`[EMAIL SIMULATOR] Text Content:\n${text}`);
-    console.log('='.repeat(60) + '\n');
   }
+
+  // Log to simulated emails memory store
+  simulatedEmails.push({ to, subject, text, html, timestamp: new Date() });
+  if (simulatedEmails.length > 50) {
+    simulatedEmails.shift();
+  }
+
+  // Elegant fallback logging for immediate out-of-the-box feedback
+  console.log('\n' + '='.repeat(60));
+  console.log(`[EMAIL SIMULATOR] Outbound email to: ${to}`);
+  console.log(`[EMAIL SIMULATOR] Subject: ${subject}`);
+  console.log('-'.repeat(60));
+  console.log(`[EMAIL SIMULATOR] Text Content:\n${text}`);
+  console.log('='.repeat(60) + '\n');
 }
 
 export async function sendOTPEmail(email: string, otp: string, name: string): Promise<void> {
